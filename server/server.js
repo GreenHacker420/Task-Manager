@@ -28,10 +28,18 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('MongoDB connected'))
+console.log('Attempting to connect to MongoDB...');
+console.log('MongoDB URI format check:', process.env.MONGODB_URI ?
+  `URI starts with: ${process.env.MONGODB_URI.substring(0, 10)}...` : 'MongoDB URI is not defined');
+
+mongoose.connect(process.env.MONGODB_URI, {
+  serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+  socketTimeoutMS: 45000, // Close sockets after 45s of inactivity
+})
+  .then(() => console.log('MongoDB connected successfully'))
   .catch(err => {
     console.error('MongoDB connection error:', err);
+    console.error('MongoDB connection error details:', JSON.stringify(err, null, 2));
     process.exit(1);
   });
 
