@@ -1,0 +1,45 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "Full-stack task management application",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "server"
+  ],
+  "scripts": {
+    "start": "npm run start:server",
+    "start:server": "cd server && npm start",
+    "start:frontend": "cd frontend && npm run preview",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:frontend\"",
+    "dev:server": "cd server && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "npm run build:frontend",
+    "build:frontend": "cd frontend && npm run build",
+    "lint": "npm run lint:frontend",
+    "lint:frontend": "cd frontend && npm run lint",
+    "install:all": "npm install && npm run install:server && npm run install:frontend",
+    "install:server": "cd server && npm install",
+    "install:frontend": "cd frontend && npm install",
+    "clean": "rimraf node_modules && npm run clean:server && npm run clean:frontend",
+    "clean:server": "cd server && rimraf node_modules",
+    "clean:frontend": "cd frontend && rimraf node_modules dist"
+  },
+  "keywords": [
+    "task-manager",
+    "react",
+    "node",
+    "express",
+    "mongodb",
+    "monorepo"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "rimraf": "^5.0.5"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
