@@ -15,7 +15,7 @@
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:frontend\"",
     "dev:server": "cd server && npm run dev",
     "dev:frontend": "cd frontend && npm run dev",
-    "build": "cd frontend && npm run build && cd ../server && npm install",
+    "build": "echo \"Build is handled by Dockerfile\"",
     "lint": "cd frontend && npm run lint",
     "clean": "rimraf node_modules && cd server && rimraf node_modules && cd ../frontend && rimraf node_modules dist"
   },
