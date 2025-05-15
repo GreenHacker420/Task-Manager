@@ -2,6 +2,13 @@
 
 This guide provides instructions for deploying the frontend and backend components of the Task Manager application separately on Railway.
 
+## Custom Domains
+
+The application will be deployed to the following domains:
+
+- Backend (Server): https://taskms.greenhacker.tech
+- Frontend: https://taskm.greenhacker.tech
+
 ## Prerequisites
 
 - A GitHub repository with your Task Manager code

@@ -2,6 +2,11 @@
 
 This README provides instructions for deploying the frontend and backend components of the Task Manager application separately on Railway.
 
+## Custom Domains
+
+- Backend (Server): https://taskms.greenhacker.tech
+- Frontend: https://taskm.greenhacker.tech
+
 ## Project Structure
 
 The Task Manager application consists of two main components:
@@ -23,6 +28,7 @@ Deploying the frontend and backend separately offers several advantages:
 - A GitHub repository with your Task Manager code
 - A Railway account
 - A MongoDB Atlas account (or use Railway's MongoDB plugin)
+
 
 ## Deployment Steps
 
