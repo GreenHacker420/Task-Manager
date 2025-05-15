@@ -4,7 +4,7 @@ This document summarizes the configuration for separate deployment of the Task M
 
 ## Custom Domains
 
-- **Frontend**: https://taskm.greenhacker.tech
+- **Frontend**: https://task.greenhacker.tech
 - **Backend (Server)**: https://taskms.greenhacker.tech
 
 ## Deployment Configuration
@@ -28,7 +28,7 @@ The frontend is configured for deployment to Railway with the following files:
 - `frontend/.dockerignore` - Files to exclude from the Docker image
 
 Key configuration points:
-- The frontend will be served at https://taskm.greenhacker.tech
+- The frontend will be served at https://task.greenhacker.tech
 - API requests will be proxied to https://taskms.greenhacker.tech/api
 - The build process uses `npm run build:skip-ts` to skip TypeScript type checking during build
 
@@ -43,7 +43,7 @@ The backend is configured for deployment to Railway with the following files:
 
 Key configuration points:
 - The server will be accessible at https://taskms.greenhacker.tech
-- CORS is configured to allow requests from https://taskm.greenhacker.tech
+- CORS is configured to allow requests from https://task.greenhacker.tech
 - A health check endpoint is available at /health for Railway monitoring
 - The code that served the frontend from the server has been removed
 
@@ -67,11 +67,11 @@ Detailed deployment instructions are available in the following files:
    - Create a new Railway project for the frontend
    - Set the root directory to `frontend/`
    - Configure environment variables
-   - Set up the custom domain: taskm.greenhacker.tech
+   - Set up the custom domain: task.greenhacker.tech
 
 3. **Verify the Deployment**:
    - Test the backend API at https://taskms.greenhacker.tech/health
-   - Test the frontend at https://taskm.greenhacker.tech
+   - Test the frontend at https://task.greenhacker.tech
    - Test the login functionality to ensure the connection between frontend and backend
 
 ## Troubleshooting

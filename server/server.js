@@ -27,6 +27,7 @@ app.use(cors({
       process.env.FRONTEND_URL || 'http://localhost:8080',
       'https://task-manager-production.up.railway.app',
       'https://taskm.greenhacker.tech',
+      'https://task.greenhacker.tech',
       'https://taskms.greenhacker.tech'
     ];
 

@@ -3,7 +3,7 @@
 This guide provides specific instructions for deploying the Task Manager application with the following custom domains:
 
 - Backend (Server): https://taskms.greenhacker.tech
-- Frontend: https://taskm.greenhacker.tech
+- Frontend: https://task.greenhacker.tech
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ This guide provides specific instructions for deploying the Task Manager applica
    - `JWT_EXPIRATION`: Token expiration time (e.g., `7d`)
    - `GOOGLE_CLIENT_ID`: Your Google OAuth client ID
    - `GOOGLE_CLIENT_SECRET`: Your Google OAuth client secret
-   - `FRONTEND_URL`: Set to `https://taskm.greenhacker.tech`
+   - `FRONTEND_URL`: Set to `https://task.greenhacker.tech`
 
 3. **Set Up Custom Domain**
    - Go to the Settings tab in your Railway project
@@ -49,7 +49,7 @@ This guide provides specific instructions for deploying the Task Manager applica
 
 3. **Set Up Custom Domain**
    - Go to the Settings tab in your Railway project
-   - Add the custom domain: `taskm.greenhacker.tech`
+   - Add the custom domain: `task.greenhacker.tech`
    - Follow Railway's instructions to configure DNS settings with your domain provider
 
 ## DNS Configuration
@@ -59,14 +59,14 @@ For each domain, you'll need to add the following DNS records with your domain p
 1. For `taskms.greenhacker.tech`:
    - Add a CNAME record pointing to your Railway backend service URL
 
-2. For `taskm.greenhacker.tech`:
+2. For `task.greenhacker.tech`:
    - Add a CNAME record pointing to your Railway frontend service URL
 
 Railway will provide the specific values to use for these CNAME records.
 
 ## Verifying the Deployment
 
-1. Visit https://taskm.greenhacker.tech to verify that the frontend is running correctly
+1. Visit https://task.greenhacker.tech to verify that the frontend is running correctly
 2. Test the login functionality to ensure the backend connection is working
 3. Check the logs in Railway for any errors
 
@@ -76,7 +76,7 @@ Railway will provide the specific values to use for these CNAME records.
 
 If you encounter CORS issues:
 
-1. Ensure the `FRONTEND_URL` environment variable in the backend project is set to `https://taskm.greenhacker.tech`
+1. Ensure the `FRONTEND_URL` environment variable in the backend project is set to `https://task.greenhacker.tech`
 2. Check that the backend's CORS configuration allows requests from the frontend domain
 
 ### API Connection Issues
