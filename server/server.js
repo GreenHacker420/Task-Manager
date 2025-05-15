@@ -24,11 +24,7 @@ app.use(cors({
     if(!origin) return callback(null, true);
 
     const allowedOrigins = [
-      process.env.FRONTEND_URL || 'http://localhost:8080',
-      'https://task-manager-production.up.railway.app',
-      'https://taskm.greenhacker.tech',
-      'https://task.greenhacker.tech',
-      'https://taskms.greenhacker.tech'
+      process.env.FRONTEND_URL || 'http://localhost:8080'
     ];
 
     if(allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
@@ -83,7 +79,7 @@ app.get('/api', (req, res) => {
   });
 });
 
-// Health check endpoint for Railway
+// Health check endpoint
 app.get('/health', (_req, res) => {
   res.status(200).json({
     status: 'ok',
@@ -92,7 +88,7 @@ app.get('/health', (_req, res) => {
   });
 });
 
-// Note: Frontend is now served separately at https://taskm.greenhacker.tech
+// Note: Frontend is served separately
 
 // Test route
 app.post('/api/test', (req, res) => {
