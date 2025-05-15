@@ -21,12 +21,5 @@ EXPOSE 5001
 # Set working directory to server
 WORKDIR /app/server
 
-# Debug: Show directory structure
-RUN echo "Directory structure:" && \
-    echo "Current directory:" && pwd && ls -la && \
-    echo "App directory:" && ls -la /app && \
-    echo "Frontend directory:" && ls -la /app/frontend && \
-    echo "Frontend dist directory:" && ls -la /app/frontend/dist
-
 # Start server
 CMD ["node", "server.js"]

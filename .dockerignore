@@ -3,13 +3,6 @@ node_modules
 */node_modules
 */*/node_modules
 
-# Build outputs (but keep frontend/dist for production)
-dist
-build
-# Don't ignore frontend/dist as we need it for the server
-# */dist
-# */build
-
 # Environment variables
 .env
 .env.*
