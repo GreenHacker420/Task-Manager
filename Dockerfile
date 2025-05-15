@@ -1,45 +1,25 @@
-# Build stage for frontend
-FROM node:18.19-alpine3.19 AS frontend-builder
-
-# Set working directory
-WORKDIR /app/frontend
-
-# Copy package.json files for frontend
-COPY frontend/package*.json ./
-
-# Install frontend dependencies directly
-RUN npm install --no-fund --no-audit
-
-# Copy frontend source
-COPY frontend ./
-
-# Build frontend - skip TypeScript checks for build
-RUN npm run build:skip-ts
-
-# Build stage for server
-FROM node:18.19-alpine3.19 AS server-builder
-
-# Set working directory
-WORKDIR /app/server
-
-# Copy package.json files for server
-COPY server/package*.json ./
-
-# Install server dependencies directly
-RUN npm install --only=production --no-fund --no-audit
-
-# Final stage
-FROM node:18.19-alpine3.19
+# Single-stage build for simplicity
+FROM node:18-alpine
 
 # Set working directory
 WORKDIR /app
 
-# Copy server from server-builder
-COPY --from=server-builder /app/server/node_modules ./server/node_modules
+# Copy package.json files
+COPY package*.json ./
+COPY frontend/package*.json ./frontend/
+COPY server/package*.json ./server/
+
+# Install dependencies
+RUN cd frontend && npm install --no-fund --no-audit
+RUN cd server && npm install --only=production --no-fund --no-audit
+
+# Copy source code
+COPY frontend ./frontend
 COPY server ./server
 
-# Copy built frontend from frontend-builder
-COPY --from=frontend-builder /app/frontend/dist ./frontend/dist
+# Build frontend
+WORKDIR /app/frontend
+RUN npm run build:skip-ts
 
 # Expose port
 EXPOSE 5001
