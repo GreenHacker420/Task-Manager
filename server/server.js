@@ -91,65 +91,7 @@ app.get('/health', (_req, res) => {
   });
 });
 
-// Serve static files from the frontend build directory in production
-if (process.env.NODE_ENV === 'production') {
-  import('path').then(path => {
-    // Use fileURLToPath to correctly resolve __dirname in ESM
-    import('url').then(({ fileURLToPath }) => {
-      const __filename = fileURLToPath(import.meta.url);
-      const __dirname = path.dirname(__filename);
-
-      const frontendPath = path.resolve(__dirname, '../frontend/dist');
-      console.log('Attempting to serve frontend from:', frontendPath);
-
-      // Check if the directory exists
-      import('fs').then(fs => {
-        if (fs.existsSync(frontendPath)) {
-          console.log('Frontend directory exists');
-        } else {
-          console.log('Frontend directory does not exist');
-          // Try alternative paths
-          const altPath = path.resolve(__dirname, '../../frontend/dist');
-          console.log('Trying alternative path:', altPath);
-          if (fs.existsSync(altPath)) {
-            console.log('Alternative frontend directory exists');
-            // Serve static files from alternative path
-            app.use(express.static(altPath));
-            // All GET requests not handled by API routes or static files will return the React app
-            app.get('*', (req, res, next) => {
-              // Skip API routes
-              if (req.path.startsWith('/api')) {
-                return next();
-              }
-              console.log('Serving React app for path (alt):', req.path);
-              res.sendFile(path.resolve(altPath, 'index.html'));
-            });
-            return;
-          }
-        }
-
-        // Serve static files from original path
-        app.use(express.static(frontendPath));
-
-        // All GET requests not handled by API routes or static files will return the React app
-        app.get('*', (req, res, next) => {
-          // Skip API routes
-          if (req.path.startsWith('/api')) {
-            return next();
-          }
-          console.log('Serving React app for path:', req.path);
-          res.sendFile(path.resolve(frontendPath, 'index.html'));
-        });
-      }).catch(err => {
-        console.error('Error checking frontend directory:', err);
-      });
-    }).catch(err => {
-      console.error('Error importing url module:', err);
-    });
-  }).catch(err => {
-    console.error('Error setting up static file serving:', err);
-  });
-}
+// Note: Frontend is now served separately at https://taskm.greenhacker.tech
 
 // Test route
 app.post('/api/test', (req, res) => {
