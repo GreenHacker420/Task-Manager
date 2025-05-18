@@ -23,7 +23,7 @@ cd ../frontend
 npm install
 echo "Running TypeScript compiler and Vite build directly..."
 # Run TypeScript compiler and Vite build directly instead of using npm scripts
-npx tsc && npx vite build --emptyOutDir
+./node_modules/.bin/tsc && ./node_modules/.bin/vite build --emptyOutDir
 echo "✅ Frontend build complete"
 echo ""
 
