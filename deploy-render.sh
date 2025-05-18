@@ -23,7 +23,7 @@ echo ""
 
 # Build frontend and backend
 echo "Building application..."
-npm run build
+npm run build:render
 echo "✅ Build complete"
 echo ""
 
@@ -36,7 +36,7 @@ echo "1. Push your changes to GitHub or GitLab"
 echo "2. Log in to your Render account"
 echo "3. Create a new Web Service and connect your repository"
 echo "4. Use the following settings:"
-echo "   - Build Command: npm install && npm run build"
+echo "   - Build Command: npm install && npm run build:render"
 echo "   - Start Command: npm start"
 echo "5. Set up your environment variables"
 echo "6. Deploy your application"
