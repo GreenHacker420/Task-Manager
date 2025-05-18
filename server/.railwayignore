@@ -1,5 +1,10 @@
-# Ignore frontend directory
+# Ignore frontend directory and all frontend-related files
 ../frontend/
+**/frontend/
+**/frontend/**
+../package.json
+../package-lock.json
+../node_modules/
 
 # Ignore node_modules
 node_modules/

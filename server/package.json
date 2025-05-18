@@ -13,8 +13,9 @@
     "test-login": "node test-login.js",
     "health-check": "node health-check.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "echo \"No build step required\"",
-    "start:prod": "NODE_ENV=production node server.js"
+    "build": "echo \"No build step required for backend\"",
+    "start:prod": "NODE_ENV=production node server.js",
+    "railway:deploy": "./railway-up.sh"
   },
   "engines": {
     "node": ">=16.20.1"
