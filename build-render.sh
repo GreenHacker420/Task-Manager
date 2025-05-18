@@ -21,7 +21,7 @@ echo ""
 echo "Building frontend..."
 cd ../frontend
 npm install
-npm run build:direct
+npm run build:production
 echo "✅ Frontend build complete"
 echo ""
 
