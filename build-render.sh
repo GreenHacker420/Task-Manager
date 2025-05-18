@@ -21,9 +21,11 @@ echo ""
 echo "Building frontend..."
 cd ../frontend
 npm install
+echo "Installing TypeScript and Vite globally..."
+npm install -g typescript vite
 echo "Running TypeScript compiler and Vite build directly..."
 # Run TypeScript compiler and Vite build directly instead of using npm scripts
-./node_modules/.bin/tsc && ./node_modules/.bin/vite build --emptyOutDir
+tsc && vite build --emptyOutDir
 echo "✅ Frontend build complete"
 echo ""
 
