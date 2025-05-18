@@ -5,6 +5,8 @@ import morgan from 'morgan';
 import mongoose from 'mongoose';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 // Import routes
 import authRoutes from './routes/auth.routes.js';
@@ -42,13 +44,26 @@ app.use(cors({
     if(!origin) return callback(null, true);
 
     const allowedOrigins = [
-      process.env.FRONTEND_URL || 'http://localhost:8080'
+      process.env.FRONTEND_URL || 'http://localhost:8080',
+      // Allow Netlify domains for frontend deployment
+      'https://your-netlify-app.netlify.app',
+      // Allow Netlify deploy previews and branch deploys
+      /https:\/\/[a-z0-9-]+--[a-z0-9-]+\.netlify\.app/
     ];
 
-    // In production, strictly check origins
-    if(allowedOrigins.indexOf(origin) !== -1) {
+    // In production, check if origin is allowed
+    const isAllowed = allowedOrigins.some(allowedOrigin => {
+      if (typeof allowedOrigin === 'string') {
+        return allowedOrigin === origin;
+      } else if (allowedOrigin instanceof RegExp) {
+        return allowedOrigin.test(origin);
+      }
+      return false;
+    });
+
+    if (isAllowed) {
       callback(null, true);
-    } else if(process.env.NODE_ENV !== 'production') {
+    } else if (process.env.NODE_ENV !== 'production') {
       // In development, allow all origins
       callback(null, true);
     } else {
@@ -86,7 +101,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 // Debug middleware to log request body - only in development
 if (process.env.NODE_ENV !== 'production') {
-  app.use((req, res, next) => {
+  app.use((req, _res, next) => {
     console.log('Request Body:', req.body);
     next();
   });
@@ -99,7 +114,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/tasks', taskRoutes);
 
 // API root route
-app.get('/api', (req, res) => {
+app.get('/api', (_req, res) => {
   res.json({
     message: 'Welcome to Task Manager API',
     status: 'healthy',
@@ -119,10 +134,7 @@ app.get('/health', (_req, res) => {
 
 // Serve static files from the React app in production
 if (process.env.NODE_ENV === 'production') {
-  // Import path and fileURLToPath
-  import path from 'path';
-  import { fileURLToPath } from 'url';
-
+  // Use path and fileURLToPath
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
 
@@ -152,7 +164,7 @@ app.post('/api/test', (req, res) => {
 });
 
 // Error handling middleware
-app.use((err, req, res, _next) => {
+app.use((err, _req, res, _next) => {
   console.error('Server error:', err.stack);
   res.status(500).json({
     message: err.message || 'Something went wrong on the server',

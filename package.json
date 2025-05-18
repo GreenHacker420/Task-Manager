@@ -24,7 +24,10 @@
     "clean": "rimraf node_modules && cd server && rimraf node_modules public && cd ../frontend && rimraf node_modules dist",
     "deploy": "npm run build && npm start",
     "deploy:render": "./deploy-render.sh",
-    "test:monorepo": "./test-monorepo.sh"
+    "test:monorepo": "./test-monorepo.sh",
+    "deploy:railway": "npx railway up --service server",
+    "deploy:netlify": "cd frontend && npx netlify deploy --prod",
+    "deploy:all": "npm run deploy:railway && npm run deploy:netlify"
   },
   "keywords": [
     "task-manager",
@@ -37,7 +40,9 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@railway/cli": "4.5.1",
     "concurrently": "^8.2.2",
+    "netlify-cli": "21.4.2",
     "rimraf": "^5.0.5"
   },
   "engines": {
