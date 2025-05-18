@@ -1,0 +1,32 @@
+# Ignore frontend directory
+../frontend/
+
+# Ignore node_modules
+node_modules/
+
+# Ignore build artifacts
+dist/
+build/
+
+# Ignore Docker files
+Dockerfile
+Dockerfile.railway
+
+# Ignore git files
+.git/
+.gitignore
+
+# Ignore environment files
+.env.example
+.env.development
+.env.render.example
+.env.production.example
+
+# Ignore logs
+*.log
+
+# Ignore test files
+test/
+tests/
+*.test.js
+*.spec.js

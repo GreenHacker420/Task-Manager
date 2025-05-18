@@ -2,16 +2,15 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Copy only server package files
+COPY package.json ./
+COPY package-lock.json ./
 
 # Install dependencies
 RUN npm install --production
 
-# Copy application code
+# Copy only server code
 COPY . .
-
-# No build step required for server
 
 # Set environment variables
 ENV NODE_ENV=production
