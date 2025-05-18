@@ -13,7 +13,7 @@ RUN npm install
 FROM base AS frontend-build
 WORKDIR /app/frontend
 RUN npm install
-RUN npm run build
+RUN npx tsc && npx vite build --emptyOutDir
 
 # Production image
 FROM node:18-alpine AS production
