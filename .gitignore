@@ -16,6 +16,7 @@ build/
 out/
 dist-ssr/
 *.local
+server/public/
 
 # Logs
 logs

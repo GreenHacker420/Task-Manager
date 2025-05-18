@@ -11,8 +11,10 @@
     "test-api": "node test-api.js",
     "check-db": "node check-db.js",
     "test-login": "node test-login.js",
+    "health-check": "node health-check.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "echo \"No build step required\""
+    "build": "echo \"No build step required\"",
+    "start:prod": "NODE_ENV=production node server.js"
   },
   "engines": {
     "node": ">=16.20.1"
@@ -23,8 +25,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
     "express-validator": "^7.0.1",
     "google-auth-library": "9.15.1",
+    "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
     "morgan": "^1.10.0"

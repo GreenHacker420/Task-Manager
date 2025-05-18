@@ -158,7 +158,53 @@ The frontend build output will be in the `frontend/dist` directory, which can be
 
 ## Deployment
 
-The deployment configuration has been removed. You can set up your own deployment configuration based on your preferred hosting platform.
+This project is configured for monorepo deployment, where both frontend and backend are deployed together. For detailed deployment instructions, see the [RAILWAY-DEPLOYMENT.md](RAILWAY-DEPLOYMENT.md) guide.
+
+### Recommended Deployment: Railway
+
+We recommend deploying this application to [Railway](https://railway.app/), which offers excellent support for monorepo projects:
+
+1. Connect your GitHub repository to Railway
+2. Railway will automatically detect the configuration
+3. Set up your environment variables
+4. Deploy with a single click
+
+For step-by-step instructions, see the [RAILWAY-DEPLOYMENT.md](RAILWAY-DEPLOYMENT.md) guide.
+
+### Testing Monorepo Locally
+
+To test the monorepo setup locally:
+
+```bash
+# Run the test script
+./test-monorepo.sh
+```
+
+This will build the frontend, place it in the server's public directory, and start the server in production mode.
+
+### Alternative Deployment Options
+
+The project also includes configurations for other deployment options:
+
+1. **Docker Deployment**:
+   ```bash
+   # Build and run with Docker Compose
+   docker-compose -f docker-compose.monorepo.yml up -d
+   ```
+
+2. **Heroku Deployment**:
+   - The project includes a Procfile for Heroku deployment
+   - Follow the instructions in the deployment guide
+
+### Production Environment Setup
+
+Before deploying to production, make sure to:
+
+1. Set up proper environment variables (see `.env.production.example`)
+2. Configure a production MongoDB database (MongoDB Atlas recommended)
+3. Set a strong JWT secret
+4. Enable HTTPS for all communication
+5. Set up monitoring and logging
 
 ## License
 
