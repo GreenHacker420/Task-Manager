@@ -46,9 +46,11 @@ app.use(cors({
     const allowedOrigins = [
       process.env.FRONTEND_URL || 'http://localhost:8080',
       // Allow Netlify domains for frontend deployment
-      'https://your-netlify-app.netlify.app',
+      'https://task-manager-frontend-app.netlify.app',
+      'https://682a3d73ebf3b97da1be65b7--task-manager-frontend-app.netlify.app',
+      'https://682a3f85ce6033e5b4528a1e--task-manager-frontend-app.netlify.app',
       // Allow Netlify deploy previews and branch deploys
-      /https:\/\/[a-z0-9-]+--[a-z0-9-]+\.netlify\.app/
+      /https:\/\/[a-z0-9-]+--task-manager-frontend-app\.netlify\.app/
     ];
 
     // In production, check if origin is allowed
@@ -73,7 +75,11 @@ app.use(cors({
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  exposedHeaders: ['Content-Length', 'X-Total-Count'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  maxAge: 86400 // 24 hours
 }));
 
 // Body parsing middleware
