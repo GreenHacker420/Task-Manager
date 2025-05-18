@@ -3,7 +3,7 @@ services:
   - type: web
     name: task-manager
     env: node
-    buildCommand: npm install && npm run build:render
+    buildCommand: ./build-render.sh
     startCommand: npm start
     healthCheckPath: /health
     envVars:

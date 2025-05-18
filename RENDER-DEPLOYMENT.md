@@ -33,7 +33,7 @@ Before deploying to Render, make sure you have:
 4. Configure your web service:
    - **Name**: task-manager
    - **Environment**: Node
-   - **Build Command**: `npm install && npm run build:render`
+   - **Build Command**: `./build-render.sh`
    - **Start Command**: `npm start`
    - **Plan**: Free (or select a paid plan for production)
 
