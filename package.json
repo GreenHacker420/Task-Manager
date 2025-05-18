@@ -19,7 +19,7 @@
     "build:frontend": "cd frontend && npm run build",
     "build:server": "cd server && npm run build",
     "build:render": "npm run build:server && npm run build:frontend:render",
-    "build:frontend:render": "cd frontend && npm run build:production",
+    "build:frontend:render": "cd frontend && npm run build",
     "lint": "cd frontend && npm run lint",
     "clean": "rimraf node_modules && cd server && rimraf node_modules public && cd ../frontend && rimraf node_modules dist",
     "deploy": "npm run build && npm start",
