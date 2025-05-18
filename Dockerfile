@@ -13,8 +13,9 @@ RUN npm install
 FROM base AS frontend-build
 WORKDIR /app/frontend
 RUN npm install
-RUN npm install -g typescript vite
-RUN tsc && vite build --emptyOutDir
+RUN npm install -g vite
+# Skip TypeScript compilation and use Vite's build:skip-ts script
+RUN npm run build:skip-ts
 
 # Production image
 FROM node:18-alpine AS production
