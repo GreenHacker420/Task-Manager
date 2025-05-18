@@ -13,7 +13,7 @@ RUN npm install
 FROM base AS frontend-build
 WORKDIR /app/frontend
 RUN npm install
-RUN npm run build:render
+RUN npm run build
 
 # Production image
 FROM node:18-alpine AS production
