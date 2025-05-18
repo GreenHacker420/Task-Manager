@@ -1,0 +1,27 @@
+services:
+  # Web service for the Task Manager application
+  - type: web
+    name: task-manager
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5001
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRATION
+        value: 7d
+      - key: MONGODB_URI
+        fromDatabase:
+          name: task-manager-db
+          property: connectionString
+
+# Database configuration
+databases:
+  - name: task-manager-db
+    databaseName: task-manager
+    plan: free

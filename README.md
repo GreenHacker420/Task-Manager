@@ -158,18 +158,18 @@ The frontend build output will be in the `frontend/dist` directory, which can be
 
 ## Deployment
 
-This project is configured for monorepo deployment, where both frontend and backend are deployed together. For detailed deployment instructions, see the [RAILWAY-DEPLOYMENT.md](RAILWAY-DEPLOYMENT.md) guide.
+This project is configured for monorepo deployment, where both frontend and backend are deployed together. For detailed deployment instructions, see the [RENDER-DEPLOYMENT.md](RENDER-DEPLOYMENT.md) guide.
 
-### Recommended Deployment: Railway
+### Recommended Deployment: Render
 
-We recommend deploying this application to [Railway](https://railway.app/), which offers excellent support for monorepo projects:
+We recommend deploying this application to [Render](https://render.com/), which offers excellent support for monorepo projects:
 
-1. Connect your GitHub repository to Railway
-2. Railway will automatically detect the configuration
+1. Connect your GitHub repository to Render
+2. Render will use the configuration in render.yaml
 3. Set up your environment variables
 4. Deploy with a single click
 
-For step-by-step instructions, see the [RAILWAY-DEPLOYMENT.md](RAILWAY-DEPLOYMENT.md) guide.
+For step-by-step instructions, see the [RENDER-DEPLOYMENT.md](RENDER-DEPLOYMENT.md) guide.
 
 ### Testing Monorepo Locally
 
