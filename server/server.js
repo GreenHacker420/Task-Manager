@@ -49,6 +49,7 @@ app.use(cors({
       'https://task-manager-frontend-app.netlify.app',
       'https://682a3d73ebf3b97da1be65b7--task-manager-frontend-app.netlify.app',
       'https://682a3f85ce6033e5b4528a1e--task-manager-frontend-app.netlify.app',
+      'https://682a45646e7c9ce0247457f4--task-manager-frontend-app.netlify.app',
       // Allow Netlify deploy previews and branch deploys
       /https:\/\/[a-z0-9-]+--task-manager-frontend-app\.netlify\.app/
     ];
